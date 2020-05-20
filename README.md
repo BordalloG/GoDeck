@@ -2,7 +2,7 @@
 This program intends to represent a deck of playing cards.  
 The program allows you to: 
 - Create a new deck.
-- Print the card from an existing deck.
+- Print the cards from an existing deck.
 - Deal cards from an existing deck.
 - Create a string that contains all the cards from an existing deck.
 - Save an existing deck to a file.
