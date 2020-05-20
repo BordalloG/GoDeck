@@ -41,3 +41,25 @@ func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
 
 	os.Remove("_decktesting")
 }
+
+func TestDeal(t *testing.T) {
+	amountOfCards := 5
+	d := newDeck()
+
+	hand, remainingDeck := d.deal(amountOfCards)
+
+	if len(hand) != amountOfCards {
+		t.Errorf("Expected %d cards in hand but got %v", amountOfCards, len(hand))
+	}
+	if len(remainingDeck) != len(d)-len(hand) {
+		t.Errorf("Expected %d cards in the remaining deck but got %v", amountOfCards, len(remainingDeck))
+	}
+
+	for id, remainingCard := range remainingDeck {
+		for ih, handCard := range hand {
+			if handCard == remainingCard {
+				t.Errorf("Expected no duplicated cards in hand and remaning deck, but found %v in hand position %d and remaining deck position %d", handCard, id, ih)
+			}
+		}
+	}
+}
